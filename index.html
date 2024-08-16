@@ -1,13 +1,15 @@
 ﻿<!DOCTYPE html>
 
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="zh-cn" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
     <title></title>
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 </head>
 <body>
+    <header id="header"></header>
 
-    <p>欢迎来到Sudle的小站</p>
+    <p><h2>欢迎来到Sudle的小站</h2></p>
 
     <div id="rd">
         <ul>
@@ -23,5 +25,13 @@
 
         </ul>
     </div>
+
+    <footer id="footer"></footer>
+
+    <script>
+        $("#header").load("https://static.sudle2008.top/html/header.html");
+        $("#footer").load("https://static.sudle2008.top/html/footer.html");
+    </script>
+
 </body>
 </html>
