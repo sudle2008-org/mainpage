@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+
+<html lang="zh-cn" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.sudle2008.top/css/global.css">
+    <script src="https://cdn.sudle2008.top/js/jq.js"></script>
+    <script>window.jQuery || document.write('<script src="https://cdn.sudle2008.top/js/jquery.min.js" type="text/javascript"><\/script>')</script>
+</head>
+<body>
+    <header id="header"></header>
+
+    <div id="main">
+        <p><h2>Sudle的公告栏</h2></p>
+
+        <div id="board">
+            <notice-news heading="关于本站" content="自用，建着玩的。用来熟悉各种网站操作和特性的。"></notice-news>
+            <notice-news heading="250920更新" content="增加了告示板（即本页面），以后告示在此不定期更新。告示板目前与首页共用一个仓库并与其余页面隔离，以此保障在其他功能页面无法服务时告示板的可达性。"></notice-news>
+        </div>
+    </div>
+    <script>
+        class news extends HTMLElement {
+            constructor() {
+                super();
+            }
+            connectedCallback() {
+                const level = this.getAttribute('level') || 'normal';
+                const heading = this.getAttribute('heading') || '（无标题）';
+                const content = this.getAttribute('content') || '（无内容）';
+                
+                
+                this.innerHTML = `
+                    <div style="display: flex; align-items: center;">
+                        <div>
+                            <h3>${heading}</h3>
+                            <p>${content}</p>
+                        </div>
+                    </div>
+                    <hr>
+                `;
+            }
+        }
+        customElements.define('notice-news', news);
+    </script>
+    <footer id="footer"></footer>
+    <script type="text/javascript" src="https://cdn.sudle2008.top/js/hf.js"></script>
+</body>
