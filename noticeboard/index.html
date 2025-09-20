@@ -14,27 +14,30 @@
     <div id="main">
         <p><h2>Sudle的公告栏</h2></p>
 
-        <div id="board">
-            <notice-news heading="关于本站" content="自用，建着玩的。用来熟悉各种网站操作和特性的。"></notice-news>
-            <notice-news heading="250920更新" content="增加了告示板（即本页面），以后告示在此不定期更新。告示板目前与首页共用一个仓库并与其余页面隔离，以此保障在其他功能页面无法服务时告示板的可达性。"></notice-news>
+        <div id="board" style="display:flex; flex-direction:column;">
+            <notice-news level="置顶" heading="关于本站" content="自用，建着玩的。用来熟悉各种网站操作和特性的。"></notice-news>
+            <notice-news level="更新" heading="250920更新" content="增加了告示板（即本页面），以后告示在此不定期更新。告示板目前与首页共用一个仓库并与其余页面隔离，以此保障在其他功能页面无法服务时告示板的可达性。"></notice-news>
         </div>
     </div>
+    
+    <footer id="footer"></footer>
+    
     <script>
         class news extends HTMLElement {
             constructor() {
                 super();
             }
             connectedCallback() {
-                const level = this.getAttribute('level') || 'normal';
+                const level = this.getAttribute('level') || '';
                 const heading = this.getAttribute('heading') || '（无标题）';
                 const content = this.getAttribute('content') || '（无内容）';
-                
-                
+
                 this.innerHTML = `
-                    <div style="display: flex; align-items: center;">
+                    <div>
                         <div>
-                            <h3>${heading}</h3>
-                            <p>${content}</p>
+                            <h3 style="display: inline;float: left;margin-top: 0;">${heading}</h3>
+                            <p style="opacity: 0.7;float: right;margin-top: 0;">${level}</p>
+                            <p style="clear: both;">${content}</p>
                         </div>
                     </div>
                     <hr>
@@ -43,6 +46,5 @@
         }
         customElements.define('notice-news', news);
     </script>
-    <footer id="footer"></footer>
     <script type="text/javascript" src="https://cdn.sudle2008.top/js/hf.js"></script>
 </body>
